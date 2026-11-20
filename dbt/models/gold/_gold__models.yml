@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: dim_vendor
+    description: "Dimensão de frotistas do NYC TLC."
+    columns:
+      - name: vendor_id
+        tests:
+          - unique
+          - not_null
+      - name: vendor_name
+        tests:
+          - not_null
+
+  - name: dim_payment_type
+    description: "Dimensão de métodos de pagamento."
+    columns:
+      - name: payment_type
+        tests:
+          - unique
+          - not_null
+      - name: is_valid_payment
+        tests:
+          - not_null
+
+  - name: dim_date
+    description: "Dimensão de calendário para agregação temporal."
+    columns:
+      - name: date_key
+        tests:
+          - unique
+          - not_null
+      - name: year_month
+        tests:
+          - not_null
+
+  - name: fct_taxi_trips
+    description: "Tabela Fato de corridas de táxi."
+    columns:
+      - name: trip_id
+        tests:
+          - unique
+          - not_null
+      - name: vendor_id
+        tests:
+          - relationships:
+              to: ref('dim_vendor')
+              field: vendor_id
+      - name: payment_type
+        tests:
+          - relationships:
+              to: ref('dim_payment_type')
+              field: payment_type
+      - name: is_valid_trip
+        tests:
+          - not_null
+
+  - name: mv_monthly_taxi_metrics
+    description: "Visão analítica dos indicadores mensais exigidos pelo desafio."
+    columns:
+      - name: pickup_year_month
+        tests:
+          - not_null
+      - name: vendor_id
+        tests:
+          - not_null
+      - name: total_trips
+        tests:
+          - not_null
+      - name: total_valid_revenue
+        tests:
+          - not_null

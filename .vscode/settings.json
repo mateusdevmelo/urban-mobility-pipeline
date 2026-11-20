@@ -1,0 +1,10 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    "dbt.dbtPythonPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    "dbt.dbtProjectDirs": [
+        "dbt"
+    ],
+    "dbt.profilesDir": "${workspaceFolder}/dbt",
+    "dbt.dbtMajorVersion": "v1",
+    "python.terminal.useEnvFile": true
+}

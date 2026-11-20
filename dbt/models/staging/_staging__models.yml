@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_yellow_taxi_trips
+    description: "Visão padronizada das corridas da camada Silver."
+    columns:
+      - name: trip_id
+        tests:
+          - unique
+          - not_null
+      - name: pickup_year_month
+        tests:
+          - not_null
+
+  - name: stg_payment_types
+    description: "Visão padronizada dos tipos de pagamento."
+    columns:
+      - name: payment_type
+        tests:
+          - unique
+          - not_null

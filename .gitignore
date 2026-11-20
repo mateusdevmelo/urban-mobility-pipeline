@@ -1,0 +1,66 @@
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.env.backup
+
+# Python virtual environments
+.venv/
+.venv-*/
+venv/
+env/
+
+# Python cache and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Spark
+.sparkStaging/
+spark-warehouse/
+metastore_db/
+
+# Pipeline data and metadata
+data/bronze/
+data/silver/
+data/metadata/
+data/silver_test/
+
+# Airflow local files
+airflow/logs/
+airflow.db
+airflow.db-journal/
+logs/
+
+# Logs
+*.log
+
+# dbt generated files
+target/
+dbt_packages/
+.dbt/
+
+# IDE and operating system
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local backups
+*.backup
+*.backup-*
+*.bak
+docker-compose.yml.backup*
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Local data and generated files
+data/
+
+dbt/.user.yml
+docker/postgres/init/

@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: silver
+    schema: silver
+    tables:
+      - name: yellow_taxi_trips
+        description: "Tabela consolidada e tratada de corridas de taxi Yellow Taxi carregada pelo PySpark."
+        columns:
+          - name: trip_id
+            description: "Identificador hash SHA-256 único e determinístico da corrida."
+            tests:
+              - not_null
+              - unique
+          - name: pickup_year_month
+            description: "Competência mensal no formato YYYYMM baseada no pickup."
+            tests:
+              - not_null
+          - name: is_valid_trip
+            description: "Flag indicando conformidade com as regras de qualidade estrutural."
+            tests:
+              - not_null
+          - name: is_valid_payment
+            description: "Flag indicando se o tipo de pagamento é considerado receita válida."
+            tests:
+              - not_null
+
+      - name: ref_payment_type
+        description: "Tabela de referência oficial dos tipos de pagamento segundo dicionário NYC TLC."
+        columns:
+          - name: payment_type
+            tests:
+              - not_null
+              - unique
+          - name: payment_description
+            tests:
+              - not_null
+          - name: is_valid_payment
+            tests:
+              - not_null
